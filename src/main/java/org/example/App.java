@@ -94,13 +94,48 @@ public class App extends Application {
         }
 
         private void drawFunction(GraphicsContext g) {
-            
+
             double x, y;
             double prevX, prevY;
 
             double dx;
 
+            dx = 10 / 300;
+            g.setStroke(Color.RED);
+            g.setLineWidth(1);
 
+            x = -5;
+            y = func.value(x);
+
+            for (int i = 1; i <= 300; i++) {
+                prevX = x;
+                prevY = y;
+                x += dx;
+                y = func.value(x);
+                if ((!Double.isNaN(y) && (!Double.isNaN(prevY)))) {
+                    putLine(g, prevX, prevY, x, y);
+                }
+            }
+
+        }
+
+        private void putLine(GraphicsContext g, double x1, double y1, double x2, double y2) {
+            if (Math.abs(y1) > 10000 || Math.abs(y2) > 10000) {
+                return;
+            }
+            double a1, b1;
+            double a2, b2;
+
+            double width = getWidth();
+            double height = getHeight();
+
+
+            a1 = (width / 10) * (5 + x1);
+            b1 = (height / 10) * (5 - y1);
+            a2 = (width / 10) * (5 + x2);
+            b2 = (height / 10) * (5 - y2);
+
+            g.strokeLine(a1, b1, a2, b2);
         }
 
         private void drawAxes(GraphicsContext g) {

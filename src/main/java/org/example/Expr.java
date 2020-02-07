@@ -18,4 +18,8 @@ public class Expr {
     private void error(String s) {
         throw new IllegalArgumentException("Parse error: " + s + " (Position in data = " + pos + ".");
     }
+
+    public double value(double x) {
+        return 0;
+    }
 }
