@@ -94,9 +94,22 @@ public class App extends Application {
         }
 
         private void drawFunction(GraphicsContext g) {
+            
+            double x, y;
+            double prevX, prevY;
+
+            double dx;
+
+
         }
 
         private void drawAxes(GraphicsContext g) {
+            double width = getWidth();
+            double height = getHeight();
+            g.setStroke(Color.GRAY);
+            g.setLineWidth(1);
+            g.strokeLine(5, height / 2, width - 5, height / 2);
+            g.strokeLine(width / 2, 5, width / 2, height - 5);
         }
 
     }
